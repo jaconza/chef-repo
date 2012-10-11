@@ -1,0 +1,39 @@
+{
+  "name": "sensu",
+  "description": "Installs/Configures Sensu",
+  "long_description": "DESCRIPTION\n============\nInstalls and configures the Sensu server, client, API and dashboard components, installs and configures RabbitMQ and Redis for Sensu.\nSensu is a monitoring framework that aims to be simple, malleable, and scalable (https://github.com/sensu/sensu).\n\n\nCOOKBOOK DEPENDENCIES\n============\n* apt (available @ http://community.opscode.com/cookbooks/apt)\n* yum (available @ http://community.opscode.com/cookbooks/yum)\n* rabbitmq (available @ http://community.opscode.com/cookbooks/rabbitmq)\n* redis (available @ https://github.com/miah/chef-redis)\n* iptables - If using firewall options (available @ http://community.opscode.com/cookbooks/iptables)\n\n\nREQUIREMENTS\n============\n\nSSL Configuration\n---\nA data bag with SSL configuration for RabbitMQ is required, details on creating the data bag can be found at https://github.com/sensu/sensu-chef/tree/master/examples/ssl\n\n\nRECIPES\n========\n\nsensu::default\n---\nInstalls and configures Sensu and dependencies, but doesn't enable or start any Sensu services.\n\nsensu::server\n---\nConfigures and enables the Sensu server service, \"sensu-server\".\n\nsensu::client\n---\nConfigures and enables the Sensu Client service, \"sensu-client\".\n\nsensu::api\n---\nConfigures and enables the Sensu API service, \"sensu-api\", optionally configures local firewall rules if the firewall attribute is set.\n\nsensu::dashboard\n---\nConfigures and enables the Sensu dashboard service, \"sensu-dashboard\", optionally configures local firewall rules if the firewall attribute is set.\n\nsensu::rabbitmq\n---\nInstalls and configures RabbitMQ with the Sensu vhost, adds SSL support by default and optionally configures local firewall rules if the firewall attribute is set.\n\nsensu::redis\n---\nInstalls and configures Redis and optionally configures local firewall rules if the firewall attribute is set.\n\n\nEXAMPLES\n=====\nExample roles are provided within the examples directory and provide a good overview of a standard Sensu setup. A vagrantfile is also provided for setting up a local test instance using this cookbook. A Cheffile example is also provided for use with Librarian-chef.\n\n\nATTRIBUTES\n==========\n\ndefault\n-------\n* `default.sensu.version` - Version of Sensu to install\n* `default.sensu.plugin.version` - Version of Sensu Plugin gem to install\n* `default.sensu.directory` - Directory to store Sensu configs (defaults to \"/etc/sensu\")\n* `default.sensu.log.directory` - Directory to store Sensu logs (defaults to \"/var/log/sensu\")\n* `default.sensu.ssl` - If true, Sensu and RabbitMQ will use SSL encryption (defaults to true)\n* `default.sensu.sudoers` - If true, adds Sensu sudoers config to /etc/sudoers.d/sensu (defaults to false)\n* `default.sensu.firewall` - If true, will configure iptables for each sensu component - requires the iptables cookbook to be available (defaults to false)\n* `default.sensu.package.unstable` - If true, will allow for the installation of unstable packages (defaults to false)\n\nrabbitmq\n--------\n* `default.sensu.rabbitmq.host` - Host for RabbitMQ service (defaults to \"localhost\")\n* `default.sensu.rabbitmq.port` - Port for RabbitMQ (defaults to 5671)\n* `default.sensu.rabbitmq.vhost` - Vhost for RabbitMQ (defaults to \"/sensu\")\n* `default.sensu.rabbitmq.user` - User for RabbitMQ vhost authentication (defaults to \"sensu\")\n* `default.sensu.rabbitmq.password` - Password for RabbitMQ vhost authentication (defaults to \"password\")\n\nredis\n-----\n* `default.sensu.redis.host` - Host for Redis service (defaults to \"localhost\")\n* `default.sensu.redis.port` - Port for Redis to listen on (defaults to 6379)\n\napi\n---\n* `default.sensu.api.host` - Host to locate Sensu API (defaults to \"localhost\")\n* `default.sensu.api.port` - Port for Sensu API to listen on (defaults to 4567)\n\ndashboard\n---------\n* `default.sensu.dashboard.host` - Host to locate Sensu Dashboard (defaults to \"localhost\")\n* `default.sensu.dashboard.port` - Port for Sensu Dashboard to listen on (defaults to 8080)\n* `default.sensu.dashboard.user` - User for Sensu Dashboard HTTP basic authentication (defaults to \"admin\")\n* `default.sensu.dashboard.password` - Password for Sensu Dashboard HTTP basic authentication (defaults to \"secret\")\n\n\nSUPPORT\n=======\nPlease visit #sensu on irc.freenode.net and we will be more than happy to help.\n",
+  "maintainer": "Sonian, Inc.",
+  "maintainer_email": "chefs@sonian.net",
+  "license": "Apache 2.0",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "windows": ">= 0.0.0"
+  },
+  "dependencies": {
+    "apt": ">= 0.0.0",
+    "yum": ">= 0.0.0",
+    "rabbitmq": ">= 0.0.0",
+    "redis": ">= 0.0.0"
+  },
+  "recommendations": {
+    "iptables": ">= 0.0.0"
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.6"
+}
